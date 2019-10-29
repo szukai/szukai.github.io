@@ -1,0 +1,37 @@
+kloudless: connector
+version: "0.2"
+openapi: "gdrive-quickstart-oapi.yml"
+script: "gdrive_quickstart.py"
+
+service_info:
+    name: gdrive_quickstart
+    friendly_name: Google Drive Quickstart Example
+    auth: oauth2
+    apis:
+    - storage
+    category: storage
+    logo_url: 'https://s3-us-west-2.amazonaws.com/static-assets.kloudless.com/webapp/sources/gdrive.png'
+    initially_visible: false
+
+authentication:
+    handle_response: access_token
+
+features:
+    defaults:
+    - base-1
+
+transforms:
+    access_token: |
+        access_token: {{data.access_token}}
+        expiry: {{data.expires_in|expires_in_to_expiry}}
+        refresh_token: {{data.refresh_token}}
+    file: |
+        id: {{data.id}}
+        name: {{data.name}}
+        mime_type: {{data.mimeType}}
+        type: {{'folder' if data.mimeType.endswith('folder') else 'file'}}
+        {% if context.parent %}
+        parent:
+            id: {{context.parent.id}}
+            name: {{context.parent.name}}
+        {% endif %}
