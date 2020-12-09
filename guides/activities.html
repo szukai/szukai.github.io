@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Activities Guide: Fetching &amp; Receiving | Kloudless Custom Connector</title>
+    <meta name="description" content="Custom Connector Documentation">
+    <meta name="generator" content="VuePress 1.4.0">
+    <link rel="icon" href="/kl-logo.png">
+    <link rel="preload" href="/assets/css/0.styles.4e2df076.css" as="style"><link rel="preload" href="/assets/js/app.a00be1cb.js" as="script"><link rel="preload" href="/assets/js/2.119f2a7d.js" as="script"><link rel="preload" href="/assets/js/6.d05e96e2.js" as="script"><link rel="prefetch" href="/assets/js/10.0f7f8ee2.js"><link rel="prefetch" href="/assets/js/11.516aefc8.js"><link rel="prefetch" href="/assets/js/12.3beb3639.js"><link rel="prefetch" href="/assets/js/13.fb7bd892.js"><link rel="prefetch" href="/assets/js/14.df68b497.js"><link rel="prefetch" href="/assets/js/15.a6f693ec.js"><link rel="prefetch" href="/assets/js/3.59865c7b.js"><link rel="prefetch" href="/assets/js/4.d91d60a9.js"><link rel="prefetch" href="/assets/js/5.41b48d48.js"><link rel="prefetch" href="/assets/js/7.340bdfb7.js"><link rel="prefetch" href="/assets/js/8.f52965a5.js"><link rel="prefetch" href="/assets/js/9.a64800f1.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.4e2df076.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Kloudless Custom Connector</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/guides/quickstart-storage.html" class="nav-link">
+  Guides
+</a></div><div class="nav-item"><a href="/reference/kspec-ref.html" class="nav-link">
+  Reference
+</a></div><div class="nav-item"><a href="https://kloudless.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Kloudless API
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Intro
+</a></div><div class="nav-item"><a href="/guides/quickstart-storage.html" class="nav-link">
+  Guides
+</a></div><div class="nav-item"><a href="/reference/kspec-ref.html" class="nav-link">
+  Reference
+</a></div><div class="nav-item"><a href="https://kloudless.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Kloudless API
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Guides</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guides/quickstart-storage.html" class="sidebar-link">Quickstart</a></li><li><a href="/guides/transforms.html" class="sidebar-link">Transforms</a></li><li><a href="/guides/authentication.html" class="sidebar-link">Authentication</a></li><li><a href="/guides/pre-auth-form.html" class="sidebar-link">Pre-Auth Form</a></li><li><a href="/guides/activities.html" class="active sidebar-link">Activities</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guides/activities.html#overview" class="sidebar-link">Overview</a></li><li class="sidebar-sub-header"><a href="/guides/activities.html#property-values" class="sidebar-link">Property Values</a></li><li class="sidebar-sub-header"><a href="/guides/activities.html#fetch-based-activities" class="sidebar-link">Fetch-based Activities</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guides/activities.html#activities-checkpoint-get-from-timestamp" class="sidebar-link">activities.checkpoint.get_from_timestamp</a></li><li class="sidebar-sub-header"><a href="/guides/activities.html#activities-events-compose-operation" class="sidebar-link">activities.events.compose_operation</a></li><li class="sidebar-sub-header"><a href="/guides/activities.html#activities-events-query" class="sidebar-link">activities.events.query</a></li><li class="sidebar-sub-header"><a href="/guides/activities.html#activities-events-parse" class="sidebar-link">activities.events.parse</a></li><li class="sidebar-sub-header"><a href="/guides/activities.html#activities-events-append-parsed" class="sidebar-link">activities.events.append_parsed</a></li><li class="sidebar-sub-header"><a href="/guides/activities.html#activities-checkpoint-get-new-checkpoint" class="sidebar-link">activities.checkpoint.get_new_checkpoint</a></li><li class="sidebar-sub-header"><a href="/guides/activities.html#activities-events-post-process" class="sidebar-link">activities.events.post_process</a></li></ul></li><li class="sidebar-sub-header"><a href="/guides/activities.html#webhook-based-activities" class="sidebar-link">Webhook-based Activities</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guides/activities.html#registering-webhook-urls" class="sidebar-link">Registering webhook urls</a></li><li class="sidebar-sub-header"><a href="/guides/activities.html#activities-subscription-settings-initialize" class="sidebar-link">activities.subscription_settings.initialize</a></li><li class="sidebar-sub-header"><a href="/guides/activities.html#activities-subscription-settings-refresh" class="sidebar-link">activities.subscription_settings.refresh</a></li><li class="sidebar-sub-header"><a href="/guides/activities.html#activities-subscription-settings-cleanup" class="sidebar-link">activities.subscription_settings.cleanup</a></li><li class="sidebar-sub-header"><a href="/guides/activities.html#receiving-webhook-notifications" class="sidebar-link">Receiving webhook notifications</a></li><li class="sidebar-sub-header"><a href="/guides/activities.html#activities-notifications-parse-identifiers" class="sidebar-link">activities.notifications.parse_identifiers</a></li><li class="sidebar-sub-header"><a href="/guides/activities.html#activities-notifications-verify-signature" class="sidebar-link">activities.notifications.verify_signature</a></li><li class="sidebar-sub-header"><a href="/guides/activities.html#activities-notifications-parse-activity" class="sidebar-link">activities.notifications.parse_activity</a></li><li class="sidebar-sub-header"><a href="/guides/activities.html#activities-notifications-append-parsed" class="sidebar-link">activities.notifications.append_parsed</a></li><li class="sidebar-sub-header"><a href="/guides/activities.html#activities-notifications-post-process" class="sidebar-link">activities.notifications.post_process</a></li></ul></li><li class="sidebar-sub-header"><a href="/guides/activities.html#hybrid-activities" class="sidebar-link">Hybrid Activities</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="activities-guide-fetching-receiving"><a href="#activities-guide-fetching-receiving" class="header-anchor">#</a> Activities Guide: Fetching &amp; Receiving</h1> <p></p><div class="table-of-contents"><ul><li><a href="#overview">Overview</a></li><li><a href="#property-values">Property Values</a></li><li><a href="#fetch-based-activities">Fetch-based Activities</a><ul><li><a href="#activities-checkpoint-get-from-timestamp">activities.checkpoint.get_from_timestamp</a></li><li><a href="#activities-events-compose-operation">activities.events.compose_operation</a></li><li><a href="#activities-events-query">activities.events.query</a></li><li><a href="#activities-events-parse">activities.events.parse</a></li><li><a href="#activities-events-append-parsed">activities.events.append_parsed</a></li><li><a href="#activities-checkpoint-get-new-checkpoint">activities.checkpoint.get_new_checkpoint</a></li><li><a href="#activities-events-post-process">activities.events.post_process</a></li></ul></li><li><a href="#webhook-based-activities">Webhook-based Activities</a><ul><li><a href="#registering-webhook-urls">Registering webhook urls</a></li><li><a href="#activities-subscription-settings-initialize">activities.subscription_settings.initialize</a></li><li><a href="#activities-subscription-settings-refresh">activities.subscription_settings.refresh</a></li><li><a href="#activities-subscription-settings-cleanup">activities.subscription_settings.cleanup</a></li><li><a href="#receiving-webhook-notifications">Receiving webhook notifications</a></li><li><a href="#activities-notifications-parse-identifiers">activities.notifications.parse_identifiers</a></li><li><a href="#activities-notifications-verify-signature">activities.notifications.verify_signature</a></li><li><a href="#activities-notifications-parse-activity">activities.notifications.parse_activity</a></li><li><a href="#activities-notifications-append-parsed">activities.notifications.append_parsed</a></li><li><a href="#activities-notifications-post-process">activities.notifications.post_process</a></li></ul></li><li><a href="#hybrid-activities">Hybrid Activities</a></li></ul></div><p></p> <h2 id="overview"><a href="#overview" class="header-anchor">#</a> Overview</h2> <p>There are currently two types of supported activity monitoring mechanisms:
+fetch-based and webhook-based. Webhook-based activities are quite popular
+among different services and provide endpoints for registering a callback url,
+that send activity notification requests to the platform. Services using
+fetch-based activity monitoring provide activity endpoints for our platform to
+query based on time or specific snapshot token.</p> <h2 id="property-values"><a href="#property-values" class="header-anchor">#</a> Property Values</h2> <p>To implement activity monitoring, these property values need to be specified
+in the <a href="/reference/kspec-ref">KSpec</a> file first:</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code><span class="token key atrule">features</span><span class="token punctuation">:</span>
+  <span class="token comment"># Always required</span>
+  <span class="token key atrule">activities.implementation_approach</span><span class="token punctuation">:</span> script
+  <span class="token comment"># Add these three when using fetch-based mechanism</span>
+  <span class="token key atrule">events.events.persistence</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">admin</span><span class="token punctuation">:</span> <span class="token null important">null</span>
+      <span class="token key atrule">value</span><span class="token punctuation">:</span> not<span class="token punctuation">-</span>required
+  <span class="token key atrule">events.events.synchronous</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">admin</span><span class="token punctuation">:</span> <span class="token null important">null</span>
+      <span class="token key atrule">value</span><span class="token punctuation">:</span> supported
+  <span class="token key atrule">activities.events.from_endpoints</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">admin</span><span class="token punctuation">:</span> <span class="token null important">null</span>
+      <span class="token key atrule">value</span><span class="token punctuation">:</span> supported
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p><code>activities.implementation_approach</code> indicates that the activity handling
+behavior is defined in a script. If it is not defined, it will fall
+to the default behavior. The current default activity monitoring behavior
+does essentially nothing.</p> <p>If implementing fetch-based activity monitoring,
+<code>events.events.persistence: not-required</code> and
+<code>events.events.synchronous: supported</code> are a required. This combination
+indicates that the upstream activity objects are queried synchronously on
+demand without saving to the database. Kloudless is currently moving away from
+the database approach.</p> <p><code>events.events.persistence</code> specifies if processed activity objects should
+persist (be stored) in the database for later query.</p> <p><code>events.events.synchronous</code> specifies if the service connector has synchronous
+query support implemented.</p> <p>In contrast, services using webhook-based activity monitoring require
+<code>events.events.persistence: required</code> and
+<code>events.events.synchronous: no-vendor</code>. If <code>events.events.synchronous</code> is
+omitted, the default value would be the same as specifying it to <code>no-vendor</code>
+(Not supported by vendor).</p> <p>Webhook requests can come in either one at a time or in small batches. In this
+case parsed activity objects need to be stored in the database first as it will
+be impossible to query them synchronously from the upstream service.</p> <p><code>activities.events.from_endpoints</code> specifies whether activity objects come from
+upstream endpoints. Its value should always be <code>supported</code> for fetch-based
+only services, or <code>no-vendor</code> for webhook-based only services.</p> <h2 id="fetch-based-activities"><a href="#fetch-based-activities" class="header-anchor">#</a> Fetch-based Activities</h2> <p>The following diagram describes the flow of fetch-based activity queries:
+<img src="/cc-fetch-activity-flow-diagram.png" alt="Fetch-based Activity Flow"></p> <p>A request from the Kloudless platform (Platform) through the Custom Connector
+python script (Script) are sent to the upstream service. The flow arrows
+are labeled with property names that each function should be registered with.</p> <p>This entire flow is combined through multiple hook functions while the main
+logic remains on the Kloudless platform. It will loop to fetch all pages of
+activity objects from the upstream service endpoints.
+Each function has its own purpose. Brief descriptions below:</p> <h3 id="activities-checkpoint-get-from-timestamp"><a href="#activities-checkpoint-get-from-timestamp" class="header-anchor">#</a> activities.checkpoint.get_from_timestamp</h3> <p>Given a <code>from_time</code> and optional <code>until_time</code> from the list activity objects
+request, return a dictionary <code>checkpoint</code> value. Kloudless uses this value as
+a progress marker for activity monitoring later in the
+<code>activities.events.compose_operation</code> function.</p> <p>Request schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    &quot;from_time&quot;: (float),
+    &quot;until_time&quot;: (float|None),
+    &quot;subscription_settings&quot;: (dict),
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>Response schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    # custom dict contents
+    ...
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="activities-events-compose-operation"><a href="#activities-events-compose-operation" class="header-anchor">#</a> activities.events.compose_operation</h3> <p>Compose a list of operation data as list of dicts. Each dict contains the
+upstream request information: operation ID, query parameter values, and
+headers.</p> <p>Request schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    &quot;checkpoint&quot;: (dict),
+    &quot;extra_data&quot;: (dict),
+    &quot;has_more&quot;: [(bool)],
+    &quot;page_size&quot;: (int),
+    &quot;subscription_id&quot;: (int)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>Response schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>[
+    {
+        &quot;operation&quot;: (str)(required),
+        &quot;parameters&quot;: (dict),
+        &quot;headers&quot;: (dict)
+    }
+]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>If multiple activity sources are used, and only a portion of them
+are exhausted, their operation dicts should still present in the response,
+but with &quot;operation&quot; set to <code>None</code>. For example,</p> <div class="language-py line-numbers-mode"><pre class="language-py"><code><span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">&quot;operation&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;get_activities_source_1&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;parameters&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token string">&quot;cursor&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;...cursor string...&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;page_size&quot;</span><span class="token punctuation">:</span> <span class="token number">200</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span><span class="token string">&quot;operation&quot;</span><span class="token punctuation">:</span> <span class="token boolean">None</span><span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>The above shows there are two activity sources, the first one still has next
+pages, while the second one doesn't have any more.</p></div> <h3 id="activities-events-query"><a href="#activities-events-query" class="header-anchor">#</a> activities.events.query</h3> <p>Optional. The default behavior is to send out concurrent requests with
+greenlets based on the operation data provided. And return a list of tuples
+(response_data, response_body). Only override this function when the default
+behavior does not meet your requirements.</p> <p>Request schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>[
+    {
+        &quot;operation&quot;: (str),
+        &quot;parameters&quot;: (dict),
+        &quot;headers&quot;: (dict)
+    }
+]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>Response schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>[
+    {
+        'response_meta': {'success': (bool)},
+        'response': (requests.Response object)
+    }
+]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>If overriding this function is required, notice the operation dicts are the
+same as the response from the previous <code>compose_operation</code> function. This means
+&quot;operation&quot; would be <code>None</code> for sources that don't have anymore pages.
+To handle these empty operations, provide <code>response_meta</code> values with
+an indicator that's easily recognizable in the following <code>parse</code> function.</p> <p>For example, the default implementation would provide an <code>'exhausted': True</code>
+in <code>response_meta</code> to indicate that a source doesn't have anymore page:</p> <div class="language-py line-numbers-mode"><pre class="language-py"><code><span class="token punctuation">{</span>
+    <span class="token string">'response_meta'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'success'</span><span class="token punctuation">:</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
+        <span class="token string">'exhausted'</span><span class="token punctuation">:</span> <span class="token boolean">True</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'response'</span><span class="token punctuation">:</span> <span class="token boolean">None</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div></div> <h3 id="activities-events-parse"><a href="#activities-events-parse" class="header-anchor">#</a> activities.events.parse</h3> <p>Parse the query's raw response into a unified activity dict format.</p> <p>Request schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    'responses': [
+        {
+            'response_meta': {'success': (bool)},
+            'response': (requests Response object)
+        }
+    ],
+    extra_data: (dict)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>Response schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    'results': [
+        [(parsed activity dict)]
+    ]
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>If there are multiple activity sources, please refer to the note from the above
+<code>query</code> to recognize exhausted sources' &quot;response_meta&quot;. And provide empty
+lists <code>[]</code> in their corresponding positions in results.</p></div> <h3 id="activities-events-append-parsed"><a href="#activities-events-append-parsed" class="header-anchor">#</a> activities.events.append_parsed</h3> <p>Optional. Aggregates parsed activities from each activities page response
+dictionary. The default behavior for this function is to append each results
+dictionary. It is possible to override this to prepend or use a sorted merge
+if required.</p> <p>Request schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    'activities_lists': [
+        [
+            {...(activity dict from previous page)...}
+        ]
+    ],
+    'parsed_activities': [
+        [
+            {...(newly parsed activity dict)...}
+        ]
+    ]
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>Response schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    'results': [
+        [(activity dict)]
+    ]
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="activities-checkpoint-get-new-checkpoint"><a href="#activities-checkpoint-get-new-checkpoint" class="header-anchor">#</a> activities.checkpoint.get_new_checkpoint</h3> <p>Compose a new checkpoint dict for the next page requests. If there are no
+more pages left to query, an indication will be made (<code>has_more</code> will be
+false).</p> <p>Request schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    'checkpoint': (dict),
+    'extra_data': (dict),
+    'operation_data': [(dict)],
+    'raw_responses': [(dict)],
+    'activities_lists': [
+        [(dict)]
+    ]
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>Response schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    'checkpoint': (dict)(required),
+    'has_more': [(bool)](required)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="activities-events-post-process"><a href="#activities-events-post-process" class="header-anchor">#</a> activities.events.post_process</h3> <p>Optional. By default, the activities post-processing will merge-sort the
+aggregated activities list. This can be overridden if required.</p> <p>Request schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>[
+    [(parsed activity dict)]
+]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>Response schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    'results': [(processed activity dict)](required)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="webhook-based-activities"><a href="#webhook-based-activities" class="header-anchor">#</a> Webhook-based Activities</h2> <p>The following diagram describes the flow for registering a webhook url to the
+upstream service:
+<img src="/cc-webhook-register-flow-diagram.png" alt="Webhook-based Registering Flow"></p> <p>This diagram describes the flow for receiving webhook notifications from
+the upstream service:
+<img src="/cc-webhook-notification-flow-diagram.png" alt="Webhook-based Receiving Flow"></p> <h3 id="registering-webhook-urls"><a href="#registering-webhook-urls" class="header-anchor">#</a> Registering webhook urls</h3> <h3 id="activities-subscription-settings-initialize"><a href="#activities-subscription-settings-initialize" class="header-anchor">#</a> activities.subscription_settings.initialize</h3> <p>This function is triggered when first creating a subscription resource, or
+when the latest <code>checkpoint</code> dict is empty.</p> <p>For some services, the developer only needs to implement the code to register
+a webhook url with the activity types to subscribe to. Otherwise, for some
+other services, the webhooks may be registered for each folder. The developer
+would then just need the code to scan these folders, and compare the result
+with a previous snapshot to register and de-register webhooks for new and
+deleted folders.</p> <p>Request schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>None
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>Response schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    'checkpoint': (dict)(required),
+    'extra_data': (dict),
+    'expiry': (float|datetime),
+    'monitored_resources': [(str)],
+    'monitored_resource_object_type': (str),
+    'monitored_resource_api': (str),
+    'token': (str),
+    'ident': (str)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h3 id="activities-subscription-settings-refresh"><a href="#activities-subscription-settings-refresh" class="header-anchor">#</a> activities.subscription_settings.refresh</h3> <p>As subscription resources are created with expiration times, the Kloudless
+platform will trigger a refresh function to renew or refresh the
+subscription resources before the time is up, the developer can specify
+the necessary updates and actions (e.g. rescanning folders).</p> <p>Request schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    'checkpoint': (dict),
+    'extra_data': (dict),
+    'expiry': (float|datetime),
+    'monitored_resources': [(str)],
+    'monitored_resource_object_type': (str),
+    'monitored_resource_api': (str),
+    'token': (str),
+    'ident': (str)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>Response schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    'checkpoint': (dict)(required),
+    'extra_data': (dict),
+    'expiry': (float|datetime),
+    'monitored_resources': [(str)],
+    'monitored_resource_object_type': (str),
+    'monitored_resource_api': (str),
+    'token': (str),
+    'ident': (str)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h3 id="activities-subscription-settings-cleanup"><a href="#activities-subscription-settings-cleanup" class="header-anchor">#</a> activities.subscription_settings.cleanup</h3> <p>This function is not in the flow diagram above. This function triggers if an
+account is being deleted, cleanup actions can be processed here. For example,
+the developer can remove previously registered webhooks in this function.</p> <p>Request schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    'ident': (str),
+    'token': (str),
+    'purpose': (str),
+    'monitored_resources': [(str)],
+    'extra_data': (dict),
+    'force': (bool),
+    'extra_kwargs': (dict)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>Response schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    'success': True
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="receiving-webhook-notifications"><a href="#receiving-webhook-notifications" class="header-anchor">#</a> Receiving webhook notifications</h3> <h3 id="activities-notifications-parse-identifiers"><a href="#activities-notifications-parse-identifiers" class="header-anchor">#</a> activities.notifications.parse_identifiers</h3> <p>When the Kloudless platform receives a webhook request, it won't know which
+accounts it belongs to. This function allows the developer to provide
+identifiers for the Kloudless platform to locate the correct subscription
+settings to map activities to the correct accounts.</p> <p>Request schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    'body': (str),
+    'headers': (dict),
+    'query_parameters': (dict),
+    'app_key': (str),
+    'type': &quot;identifiers_from_notification&quot;,
+    'extra_kwargs': (dict)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><div class="custom-block tip"><p class="custom-block-title">TIP</p> <p><code>app_key</code> is the last path variable from the webhooks URL provided to the
+service, ex. <code>https://api.kloudless.com/services/kapost/&lt;app_key&gt;</code>.
+This webhook URL is typically generated in
+<code>activities.subscription_settings.initialize</code> when registering webhooks
+to the service, or configured in the service's admin UI. While most services
+in the platform put the service key (client ID) here, it is also possible to
+use a different identifier if a better option is available.</p></div> <p>Response schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>[
+    {
+        'account_id': (str),
+        'token': (str),
+        'service_key': (str),
+        'ident': (str),
+        'extra_data': (dict)
+    }
+]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>Developers only need to provide enough identifiers for the platform to locate
+the correct subscription settings. For example, if 'ident' alone can achieve
+that, other properties like 'token', 'account_id', or <code>service_key</code> can be
+left blank.</p></div> <h3 id="activities-notifications-verify-signature"><a href="#activities-notifications-verify-signature" class="header-anchor">#</a> activities.notifications.verify_signature</h3> <p>If the service provides a way to verify the signature from the request headers
+or the request body, the developer can implement it in this function. It
+should raise an exception if it receives a false signature.</p> <p>Request schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    'body': (str),
+    'headers': (dict),
+    'query_parameters': (dict),
+    'app_key': (str),
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>Response schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    'success': True
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="activities-notifications-parse-activity"><a href="#activities-notifications-parse-activity" class="header-anchor">#</a> activities.notifications.parse_activity</h3> <p>Parse the raw activity from the request to the Kloudless platform activity
+object format.</p> <p>After activity objects are parsed, they are collected and passed on together to
+either the application webhook or the database for the list activity objects
+endpoint to query.</p> <p>Request schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{...(raw activity dict)...}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>Response schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    # Common between v1 and v2
+    'event_id': (str),
+    'event_time': (float|datetime)(required),
+    'raw_data': {'object': (dict)},
+    # v1 properties
+    'data': (dict),
+    'event_type': (str),
+    'ip': (str),
+    # v2 properties
+    'unified_event_type': (str)(required),
+    'event_category': (str),
+    'event_subtype': (str),
+    'actor': (dict),
+    'targets': [(dict)],
+    'previous_targets': [(dict)],
+    'metadata_list': [(dict)],
+    'session': (dict),
+    'stream': (str),
+    'impersonate_for_target': (str)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><h3 id="activities-notifications-append-parsed"><a href="#activities-notifications-append-parsed" class="header-anchor">#</a> activities.notifications.append_parsed</h3> <p>Append the parsed notification activity into the parsed activity objects
+collection.</p> <p>The default behavior for this function is to append the notification activity
+to the bottom of the activity objects collection. Overriding this function allows
+you to insert or prepend the activity instead if required.</p> <p>Request schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    'newly_parsed': (dict),
+    'results': [(dict)]
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>Response schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    'results': [(dict)]
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="activities-notifications-post-process"><a href="#activities-notifications-post-process" class="header-anchor">#</a> activities.notifications.post_process</h3> <p>After activity objects are parsed and collected, the developer can execute any
+required post-processing in this function before the activity results sent
+back to platform. Some examples for post-processing actions include filtering
+away non-essential activity objects or inserting extra information.</p> <p>Request schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    'results': [(dict)]
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>Response schema:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    'results': [(dict)]
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="hybrid-activities"><a href="#hybrid-activities" class="header-anchor">#</a> Hybrid Activities</h2> <p>Some services may use both fetch-based and webhook-based endpoints for
+different types of activity objects. In this case the property values should
+be set as the following:</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code><span class="token key atrule">features</span><span class="token punctuation">:</span>
+  <span class="token comment"># Always required</span>
+  <span class="token key atrule">activities.implementation_approach</span><span class="token punctuation">:</span> script
+  <span class="token key atrule">events.events.persistence</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">admin</span><span class="token punctuation">:</span> <span class="token null important">null</span>
+      <span class="token key atrule">value</span><span class="token punctuation">:</span> required
+  <span class="token key atrule">events.events.synchronous</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">admin</span><span class="token punctuation">:</span> <span class="token null important">null</span>
+      <span class="token key atrule">value</span><span class="token punctuation">:</span> no<span class="token punctuation">-</span>vendor
+  <span class="token key atrule">activities.events.from_endpoints</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">admin</span><span class="token punctuation">:</span> <span class="token null important">null</span>
+      <span class="token key atrule">value</span><span class="token punctuation">:</span> supported
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>The <code>events.events.persistence</code> property is set to <code>True</code> and
+<code>events.events.synchronous</code> is set to <code>no-vendor</code> so that both fetch-based and
+webhook-based activity objects go into database and can be queried with list
+activity objects request to the Kloudless platform.</p> <p>All that's left is to implement the previously mentioned property functions and
+behaviors for both fetch-based and webhook-based activity monitoring
+mechanisms.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/guides/pre-auth-form.html" class="prev">
+        Pre-Auth Form
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.a00be1cb.js" defer></script><script src="/assets/js/2.119f2a7d.js" defer></script><script src="/assets/js/6.d05e96e2.js" defer></script>
+  </body>
+</html>
